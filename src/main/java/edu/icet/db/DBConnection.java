@@ -9,7 +9,7 @@ public class DBConnection {
     private Connection connection;
 
     private DBConnection() throws SQLException {
-        // Replace 'thogakade' with your actual DB name from the script
+
         connection = DriverManager.getConnection(
                 "jdbc:mysql://localhost:3306/Thogakade", "root", "mysqllol@123"
         );
