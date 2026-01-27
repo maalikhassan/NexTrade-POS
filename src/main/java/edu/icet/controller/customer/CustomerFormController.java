@@ -164,16 +164,31 @@ public class CustomerFormController implements Initializable {
 
         customerRepo.addCustomer(id, title, name, java.sql.Date.valueOf(dob), salary, address, city, province, postalCode);
         loadCustomerTable();
+        clearFields();
     }
 
     @FXML
     void btnUpdateAction(ActionEvent event) {
+        String id = txtCusId.getText();
+        String title = comboTitle.getValue();
+        String name = txtCusName.getText();
+        LocalDate dob = dateCusDob.getValue();
+        Double salary = Double.parseDouble(txtCusSalary.getText());
+        String address = txtCusAddress.getText();
+        String city = comboCity.getValue();
+        String province = comboProvince.getValue();
+        String postalCode = txtCusPostal.getText();
 
+        customerRepo.updateCustomer(id, title, name, java.sql.Date.valueOf(dob), salary, address, city, province, postalCode);
+        loadCustomerTable();
     }
 
     @FXML
     void btnDeleteAction(ActionEvent event) {
-
+        String id = txtCusId.getText();
+        customerRepo.deleteCustomer(id);
+        clearFields();
+        loadCustomerTable();
     }
 
     @FXML
