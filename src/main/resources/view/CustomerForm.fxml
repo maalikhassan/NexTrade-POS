@@ -36,9 +36,9 @@
       <ComboBox fx:id="comboTitle" layoutX="152.0" layoutY="56.0" prefHeight="25.0" prefWidth="82.0" promptText="Title" />
       <DatePicker fx:id="dateCusDob" layoutX="449.0" layoutY="56.0" promptText="Date Of Birth" />
       <TextField fx:id="txtCusSalary" layoutX="14.0" layoutY="92.0" prefHeight="25.0" prefWidth="144.0" promptText="Salary" />
-      <TextArea fx:id="txtCusArea" layoutX="325.0" layoutY="92.0" prefHeight="67.0" prefWidth="327.0" promptText="Address" />
+      <TextArea fx:id="txtCusAddress" layoutX="325.0" layoutY="92.0" prefHeight="67.0" prefWidth="327.0" promptText="Address" />
       <ComboBox fx:id="comboCity" layoutX="14.0" layoutY="126.0" prefHeight="25.0" prefWidth="144.0" promptText="City" />
-      <ComboBox fx:id="comboCity1" layoutX="166.0" layoutY="126.0" prefWidth="150.0" promptText="Province" />
+      <ComboBox fx:id="comboProvince" layoutX="166.0" layoutY="126.0" prefWidth="150.0" promptText="Province" />
       <TextField fx:id="txtCusPostal" layoutX="166.0" layoutY="92.0" prefHeight="25.0" prefWidth="150.0" promptText="Postal Code" />
       <Button fx:id="btnAdd" layoutX="14.0" layoutY="159.0" mnemonicParsing="false" onAction="#btnAddAction" prefHeight="25.0" prefWidth="65.0" text="Add" />
       <Button fx:id="btnUpdate" layoutX="86.0" layoutY="159.0" mnemonicParsing="false" onAction="#btnUpdateAction" prefHeight="25.0" prefWidth="65.0" text="Update" />
