@@ -20,6 +20,14 @@ public class HomeController {
         setNode("ItemForm.fxml");
     }
 
+    public void loadDashboardView(ActionEvent actionEvent) throws IOException {
+        setNode("Home.fxml");
+    }
+
+    public void loadOrderView(ActionEvent actionEvent) throws IOException {
+        setNode("OrderForm.fxml");
+    }
+
     // A helper method to keep your code clean and dry
     private void setNode(String fxmlPath) throws IOException {
         Node node = FXMLLoader.load(getClass().getResource("/view/" + fxmlPath));
@@ -32,11 +40,5 @@ public class HomeController {
         AnchorPane.setRightAnchor(node, 0.0);
     }
 
-    public void loadDashboardView(ActionEvent actionEvent) {
 
-    }
-
-    public void loadOrderView(ActionEvent actionEvent) {
-
-    }
 }
