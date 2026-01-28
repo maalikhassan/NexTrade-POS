@@ -1,8 +1,9 @@
 package edu.icet.controller.customer;
 
 import edu.icet.model.dto.CustomerDto;
-import edu.icet.repository.CustomerRepo;
+import edu.icet.repository.CustomerRepositoryImpl;
 import edu.icet.service.CustomerFormService;
+import edu.icet.service.CustomerServiceImpl;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -24,7 +25,7 @@ import java.util.*;
 public class CustomerFormController implements Initializable {
 
     //CustomerRepo customerRepo = new CustomerRepo(); //should pass to the interface, and int will pass to repo
-    CustomerFormService customerFormService = new CustomerRepo();
+    CustomerFormService customerFormService = new CustomerServiceImpl();
     private final Map<String, List<String>> cityMap = new HashMap<>();
     ObservableList<CustomerDto> customerDtoObservableList = FXCollections.observableArrayList();
     /*-----------------------------------------*/

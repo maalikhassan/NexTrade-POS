@@ -1,10 +1,6 @@
 package edu.icet.repository;
 
-import edu.icet.service.CustomerFormService;
 import edu.icet.db.DBConnection;
-import edu.icet.model.dto.CustomerDto;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,43 +8,23 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
 
-public class CustomerRepo implements CustomerFormService {
-    @Override
-    public ObservableList<CustomerDto> getAllCustomers() {
+public class CustomerRepositoryImpl implements CustomerRepository{ //should only communicate with the DB
 
-        ObservableList<CustomerDto>customerDtoObservableList = FXCollections.observableArrayList();
+    public ResultSet getAllCustomers() throws SQLException {
 
-        try{
             Connection connection = DBConnection.getInstance().getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement("SELECT*FROM customer");
 
             ResultSet resultSet = preparedStatement.executeQuery();
 
-            while (resultSet.next()){
-                CustomerDto customerDto = new CustomerDto(
-                        resultSet.getString("CustId"),
-                        resultSet.getString("CustTitle"),
-                        resultSet.getString("CustName"),
-                        resultSet.getDate("DOB"),
-                        resultSet.getDouble("salary"),
-                        resultSet.getString("CustAddress"),
-                        resultSet.getString("City"),
-                        resultSet.getString("Province"),
-                        resultSet.getString("PostalCode")
-                );
-
-                customerDtoObservableList.add(customerDto);
-            }
-
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-        return customerDtoObservableList;
+        return resultSet;
     }
 
     @Override
-    public void addCustomer(String id, String title, String name, Date dob, Double salary, String address, String city, String province, String postalCode) {
-        try {
+    public void addCustomer(String id, String title, String name, Date dob, Double salary,
+                            String address, String city, String province, String postalCode)
+            throws SQLException {
+
             Connection connection = DBConnection.getInstance().getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO customer " +
                     "VALUES (?,?,?,?,?,?,?,?,?)");
@@ -64,15 +40,13 @@ public class CustomerRepo implements CustomerFormService {
             preparedStatement.setObject(9, postalCode);
 
             preparedStatement.execute();
-
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
     }
 
     @Override
-    public void updateCustomer(String id, String title, String name, Date dob, Double salary, String address, String city, String province, String postalCode) {
-        try {
+    public void updateCustomer(String id, String title, String name, Date dob, Double salary,
+                               String address, String city, String province, String postalCode)
+            throws SQLException {
+
             Connection connection = DBConnection.getInstance().getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement("UPDATE customer " +
                     "SET CustTitle=?, CustName=?, DOB=?, salary=?, CustAddress=?, City=?, Province=?, PostalCode=? " +
@@ -89,24 +63,15 @@ public class CustomerRepo implements CustomerFormService {
             preparedStatement.setObject(9, id);
 
             preparedStatement.executeUpdate();
-
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
     }
 
     @Override
-    public void deleteCustomer(String id) {
-        try {
+    public void deleteCustomer(String id) throws SQLException {
             Connection connection = DBConnection.getInstance().getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM customer WHERE CustId=?");
 
             preparedStatement.setObject(1, id);
 
             preparedStatement.execute();
-
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
     }
 }
