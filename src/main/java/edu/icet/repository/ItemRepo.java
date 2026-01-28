@@ -1,8 +1,7 @@
 package edu.icet.repository;
 
-import edu.icet.controller.item.ItemFormService;
+import edu.icet.service.ItemFormService;
 import edu.icet.db.DBConnection;
-import edu.icet.model.dto.CustomerDto;
 import edu.icet.model.dto.ItemDto;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

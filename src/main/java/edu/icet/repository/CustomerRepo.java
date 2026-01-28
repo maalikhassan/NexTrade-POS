@@ -1,6 +1,6 @@
 package edu.icet.repository;
 
-import edu.icet.controller.customer.CustomerFormService;
+import edu.icet.service.CustomerFormService;
 import edu.icet.db.DBConnection;
 import edu.icet.model.dto.CustomerDto;
 import javafx.collections.FXCollections;
