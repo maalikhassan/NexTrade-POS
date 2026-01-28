@@ -50,7 +50,8 @@ public class CustomerRepo implements CustomerFormService {
     public void addCustomer(String id, String title, String name, Date dob, Double salary, String address, String city, String province, String postalCode) {
         try {
             Connection connection = DBConnection.getInstance().getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO customer VALUES (?,?,?,?,?,?,?,?,?)");
+            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO customer " +
+                    "VALUES (?,?,?,?,?,?,?,?,?)");
 
             preparedStatement.setObject(1, id);
             preparedStatement.setObject(2, title);
@@ -73,7 +74,9 @@ public class CustomerRepo implements CustomerFormService {
     public void updateCustomer(String id, String title, String name, Date dob, Double salary, String address, String city, String province, String postalCode) {
         try {
             Connection connection = DBConnection.getInstance().getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE customer SET CustTitle=?, CustName=?, DOB=?, salary=?, CustAddress=?, City=?, Province=?, PostalCode=? WHERE CustId=?");
+            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE customer " +
+                    "SET CustTitle=?, CustName=?, DOB=?, salary=?, CustAddress=?, City=?, Province=?, PostalCode=? " +
+                    "WHERE CustId=?");
 
             preparedStatement.setObject(1, title);
             preparedStatement.setObject(2, name);
