@@ -1,8 +1,9 @@
 package edu.icet.controller.item;
 
 import edu.icet.model.dto.ItemDto;
-import edu.icet.repository.ItemRepo;
-import edu.icet.service.ItemFormService;
+import edu.icet.repository.item.ItemRepositoryImpl;
+import edu.icet.service.item.ItemFormService;
+import edu.icet.service.item.ItemServiceImpl;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -22,7 +23,7 @@ import java.util.ResourceBundle;
 public class ItemFormController implements Initializable {
 
     //ItemRepo itemRepo = new ItemRepo(); //should pass to the interface, and int will pass to repo
-    ItemFormService itemFormService = new ItemRepo();
+    ItemFormService itemFormService = new ItemServiceImpl();
     ObservableList<ItemDto> itemDtoObservableList = FXCollections.observableArrayList();
 
     @FXML
@@ -113,16 +114,27 @@ public class ItemFormController implements Initializable {
 
     @FXML
     void btnUpdateAction(ActionEvent event) {
+        String code = txtItemCode.getText();
+        String description = txtItemDesc.getText();
+        String packSize = txtPackSize.getText();
+        double unitPrice = Double.parseDouble(txtUnitPrice.getText());
+        int qtyOnHand = Integer.parseInt(txtQtyOnHand.getText());
 
+        itemFormService.updateItem(code, description, packSize, unitPrice, qtyOnHand);
+        loadItemtable();
+        clearFields();
     }
     @FXML
     void btnDeleteAction(ActionEvent event) {
-
+        String code = txtItemCode.getText();
+        itemFormService.deleteItem(code);
+        loadItemtable();
+        clearFields();
     }
 
     @FXML
     void btnLoadAction(ActionEvent event) {
-
+        loadItemtable();
     }
 
     @FXML

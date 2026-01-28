@@ -1,4 +1,4 @@
-package edu.icet.repository;
+package edu.icet.repository.customer;
 
 import edu.icet.db.DBConnection;
 

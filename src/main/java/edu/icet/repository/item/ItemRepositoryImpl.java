@@ -1,6 +1,5 @@
-package edu.icet.repository;
+package edu.icet.repository.item;
 
-import edu.icet.service.ItemFormService;
 import edu.icet.db.DBConnection;
 import edu.icet.model.dto.ItemDto;
 import javafx.collections.FXCollections;
@@ -11,33 +10,16 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class ItemRepo implements ItemFormService {
+public class ItemRepositoryImpl implements ItemRepository {
     @Override
-    public ObservableList<ItemDto> getAllItems() {
-        ObservableList<ItemDto>itemDtoObservableList = FXCollections.observableArrayList();
+    public ResultSet getAllItems() throws SQLException{
 
-        try{
             Connection connection = DBConnection.getInstance().getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement("SELECT*FROM item");
 
             ResultSet resultSet = preparedStatement.executeQuery();
 
-            while (resultSet.next()){
-                ItemDto  itemDto = new ItemDto(
-                        resultSet.getString("ItemCode"),
-                        resultSet.getString("Description"),
-                        resultSet.getString("PackSize"),
-                        resultSet.getDouble("UnitPrice"),
-                        resultSet.getInt("QtyOnHand")
-                );
-
-                itemDtoObservableList.add(itemDto);
-            }
-
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-        return itemDtoObservableList;
+        return resultSet;
     }
 
     @Override

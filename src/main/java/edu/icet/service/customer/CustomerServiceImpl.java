@@ -1,14 +1,11 @@
-package edu.icet.service;
+package edu.icet.service.customer;
 
-import edu.icet.db.DBConnection;
 import edu.icet.model.dto.CustomerDto;
-import edu.icet.repository.CustomerRepository;
-import edu.icet.repository.CustomerRepositoryImpl;
+import edu.icet.repository.customer.CustomerRepository;
+import edu.icet.repository.customer.CustomerRepositoryImpl;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;

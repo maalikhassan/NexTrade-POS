@@ -1,4 +1,4 @@
-package edu.icet.repository;
+package edu.icet.repository.customer;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

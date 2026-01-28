@@ -1,9 +1,8 @@
 package edu.icet.controller.customer;
 
 import edu.icet.model.dto.CustomerDto;
-import edu.icet.repository.CustomerRepositoryImpl;
-import edu.icet.service.CustomerFormService;
-import edu.icet.service.CustomerServiceImpl;
+import edu.icet.service.customer.CustomerFormService;
+import edu.icet.service.customer.CustomerServiceImpl;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
