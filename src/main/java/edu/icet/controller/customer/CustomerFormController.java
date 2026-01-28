@@ -137,7 +137,8 @@ public class CustomerFormController implements Initializable {
 
         //set selected row data to the fields
         tblCustomers.getSelectionModel().selectedItemProperty().addListener(
-                (observableValue, oldValue, newValue) -> {;
+                (observableValue, oldValue, newValue) ->
+                {
             if (newValue != null) {
                 setSelectedValue(newValue);
             }

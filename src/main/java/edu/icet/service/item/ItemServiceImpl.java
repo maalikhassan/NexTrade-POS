@@ -48,7 +48,11 @@ public class ItemServiceImpl implements ItemFormService {
     @Override
     public void updateItem(String code, String description, String packSize, double unitPrice, int qtyOnHand) {
         ItemRepository itemRepository = new ItemRepositoryImpl();
-        itemRepository.updateItem(code, description, packSize, unitPrice, qtyOnHand);
+        try {
+            itemRepository.updateItem(code, description, packSize, unitPrice, qtyOnHand);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override

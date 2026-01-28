@@ -1,7 +1,6 @@
 package edu.icet.controller.item;
 
 import edu.icet.model.dto.ItemDto;
-import edu.icet.repository.item.ItemRepositoryImpl;
 import edu.icet.service.item.ItemFormService;
 import edu.icet.service.item.ItemServiceImpl;
 import javafx.collections.FXCollections;
@@ -88,9 +87,10 @@ public class ItemFormController implements Initializable {
         tblItems.setItems(itemDtoObservableList);
 
         loadItemtable();
-        tblItems.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            setSelectedValue((ItemDto) newValue);
-        });
+        tblItems.getSelectionModel().selectedItemProperty().addListener(
+                (observable, oldValue, newValue) ->
+                        setSelectedValue((ItemDto) newValue)
+                );
 
     }
 

@@ -41,7 +41,8 @@ public class ItemRepositoryImpl implements ItemRepository {
     }
 
     @Override
-    public void updateItem(String code, String description, String packSize, double unitPrice, int qtyOnHand) {
+    public void updateItem(String code, String description, String packSize, double unitPrice, int qtyOnHand)
+            throws SQLException {
         try {
             Connection connection = DBConnection.getInstance().getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement("UPDATE item " +
@@ -55,7 +56,7 @@ public class ItemRepositoryImpl implements ItemRepository {
             preparedStatement.executeUpdate();
 
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new SQLException(e+" -> Error updating item with code: " + code);
         }
 
     }
