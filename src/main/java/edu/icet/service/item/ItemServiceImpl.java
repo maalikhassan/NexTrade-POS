@@ -7,18 +7,19 @@ import edu.icet.repository.item.ItemRepositoryImpl;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class ItemServiceImpl implements ItemFormService {
+
+    private final ItemRepository itemRepository = new ItemRepositoryImpl();
+
     @Override
     public ObservableList<ItemDto> getAllItems() {
         ObservableList<ItemDto>itemDtoObservableList = FXCollections.observableArrayList();
 
         try{
-            ItemRepository itemRepository = new ItemRepositoryImpl();
+
             ResultSet resultSet = itemRepository.getAllItems();
 
             while (resultSet.next()){
@@ -41,7 +42,7 @@ public class ItemServiceImpl implements ItemFormService {
 
     @Override
     public void addItem(String code, String description, String packSize, double unitPrice, int qtyOnHand) {
-        ItemRepository itemRepository = new ItemRepositoryImpl();
+        //ItemRepository itemRepository = new ItemRepositoryImpl();
         try {
             itemRepository.addItem(code, description, packSize, unitPrice, qtyOnHand);
         } catch (SQLException e) {
@@ -51,7 +52,7 @@ public class ItemServiceImpl implements ItemFormService {
 
     @Override
     public void updateItem(String code, String description, String packSize, double unitPrice, int qtyOnHand) {
-        ItemRepository itemRepository = new ItemRepositoryImpl();
+        //ItemRepository itemRepository = new ItemRepositoryImpl();
         try {
             itemRepository.updateItem(code, description, packSize, unitPrice, qtyOnHand);
         } catch (SQLException e) {
@@ -61,7 +62,7 @@ public class ItemServiceImpl implements ItemFormService {
 
     @Override
     public void deleteItem(String code) {
-        ItemRepository itemRepository = new ItemRepositoryImpl();
+        //ItemRepository itemRepository = new ItemRepositoryImpl();
         try {
             itemRepository.deleteItem(code);
         } catch (SQLException e) {

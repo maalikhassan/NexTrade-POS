@@ -11,13 +11,15 @@ import java.sql.SQLException;
 import java.util.Date;
 
 public class CustomerServiceImpl implements CustomerFormService{//should only communicate with the DB
+
+    private final CustomerRepository customerRepository = new CustomerRepositoryImpl();
     @Override
     public ObservableList<CustomerDto> getAllCustomers() {
 
         ObservableList<CustomerDto>customerDtoObservableList = FXCollections.observableArrayList();
 
         try{
-            CustomerRepository customerRepository = new CustomerRepositoryImpl();
+            //instead of newing the repository here, we can create a private final repo at the top
             ResultSet resultSet = customerRepository.getAllCustomers() ;
 
             while (resultSet.next()){
@@ -46,7 +48,7 @@ public class CustomerServiceImpl implements CustomerFormService{//should only co
     public void addCustomer(String id, String title, String name, Date dob, Double salary, String address,
                             String city, String province, String postalCode) {
         try {
-            CustomerRepository customerRepository = new CustomerRepositoryImpl();
+            //CustomerRepository customerRepository = new CustomerRepositoryImpl();
             customerRepository.addCustomer(id, title, name, dob, salary, address, city, province, postalCode);
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -56,7 +58,7 @@ public class CustomerServiceImpl implements CustomerFormService{//should only co
     @Override
     public void updateCustomer(String id, String title, String name, Date dob, Double salary, String address, String city, String province, String postalCode) {
         try {
-            CustomerRepository customerRepository = new CustomerRepositoryImpl();
+            //CustomerRepository customerRepository = new CustomerRepositoryImpl();
             customerRepository.updateCustomer(id, title, name, dob, salary, address, city, province, postalCode);
 
         } catch (SQLException e) {
@@ -67,7 +69,7 @@ public class CustomerServiceImpl implements CustomerFormService{//should only co
     @Override
     public void deleteCustomer(String id) {
         try {
-            CustomerRepository customerRepository = new CustomerRepositoryImpl();
+            //CustomerRepository customerRepository = new CustomerRepositoryImpl();
             customerRepository.deleteCustomer(id);
 
         } catch (SQLException e) {
