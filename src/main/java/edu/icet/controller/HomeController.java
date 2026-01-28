@@ -55,7 +55,7 @@ public class HomeController {
         }
 
         contentPane.getChildren().setAll(node); // This swaps the content instantly
-// Ensure the sub-view fills the whole pane
+        // Ensure the sub-view fills the whole pane
         AnchorPane.setTopAnchor(node, 0.0);
         AnchorPane.setBottomAnchor(node, 0.0);
         AnchorPane.setLeftAnchor(node, 0.0);

@@ -8,7 +8,12 @@ import java.sql.SQLException;
 
 public interface ItemRepository {
     ResultSet getAllItems() throws SQLException;
-    void addItem(String code, String description, String packSize, double unitPrice, int qtyOnHand);
-    void updateItem(String code, String description, String packSize, double unitPrice, int qtyOnHand)throws SQLException;
-    void deleteItem(String code);
+
+    void addItem(String code, String description, String packSize, double unitPrice, int qtyOnHand)
+            throws SQLException;
+
+    void updateItem(String code, String description, String packSize, double unitPrice, int qtyOnHand)
+            throws SQLException;
+
+    void deleteItem(String code) throws SQLException;
 }

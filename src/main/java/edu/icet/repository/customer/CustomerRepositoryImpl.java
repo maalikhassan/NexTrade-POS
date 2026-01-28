@@ -15,7 +15,8 @@ public class CustomerRepositoryImpl implements CustomerRepository{ //should only
             Connection connection = DBConnection.getInstance().getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement("SELECT*FROM customer");
 
-            return preparedStatement.executeQuery();
+            return preparedStatement.executeQuery();//this result is a result set, so direct return
+                                                    // instead of storing in a resultset variable
     }
 
     @Override

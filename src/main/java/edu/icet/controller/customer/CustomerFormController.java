@@ -125,7 +125,8 @@ public class CustomerFormController implements Initializable {
         comboTitle.setItems(FXCollections.observableArrayList("Mr", "Ms", "Mrs"));
 
         // CASCADING LOGIC: Listen for Province changes
-        comboProvince.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+        comboProvince.getSelectionModel().selectedItemProperty().addListener((observable,
+                                                                              oldValue, newValue) -> {
             if (newValue != null) {
                 // Populate City ComboBox based on the selected Province
                 List<String> cities = cityMap.get(newValue);
@@ -138,10 +139,7 @@ public class CustomerFormController implements Initializable {
         //set selected row data to the fields
         tblCustomers.getSelectionModel().selectedItemProperty().addListener(
                 (observableValue, oldValue, newValue) ->
-                {
-            if (newValue != null) {
-                setSelectedValue(newValue);
-            }
+                {if (newValue != null) setSelectedValue(newValue);
         });
     }
 
@@ -149,9 +147,7 @@ public class CustomerFormController implements Initializable {
         customerDtoObservableList.clear();
         tblCustomers.setItems(customerFormService.getAllCustomers());
     }
-
     /*-----------------------------------------*/
-
 
     @FXML
     void btnAddAction(ActionEvent event) {

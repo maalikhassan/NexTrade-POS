@@ -42,7 +42,11 @@ public class ItemServiceImpl implements ItemFormService {
     @Override
     public void addItem(String code, String description, String packSize, double unitPrice, int qtyOnHand) {
         ItemRepository itemRepository = new ItemRepositoryImpl();
-        itemRepository.addItem(code, description, packSize, unitPrice, qtyOnHand);
+        try {
+            itemRepository.addItem(code, description, packSize, unitPrice, qtyOnHand);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
@@ -58,6 +62,10 @@ public class ItemServiceImpl implements ItemFormService {
     @Override
     public void deleteItem(String code) {
         ItemRepository itemRepository = new ItemRepositoryImpl();
-        itemRepository.deleteItem(code);
+        try {
+            itemRepository.deleteItem(code);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
