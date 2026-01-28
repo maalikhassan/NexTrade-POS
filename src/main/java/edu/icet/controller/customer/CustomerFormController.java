@@ -22,7 +22,8 @@ import java.util.*;
 
 public class CustomerFormController implements Initializable {
 
-    CustomerRepo customerRepo = new CustomerRepo();
+    //CustomerRepo customerRepo = new CustomerRepo(); //should pass to the interface, and int will pass to repo
+    CustomerFormService customerFormService = new CustomerRepo();
     private final Map<String, List<String>> cityMap = new HashMap<>();
     ObservableList<CustomerDto> customerDtoObservableList = FXCollections.observableArrayList();
     /*-----------------------------------------*/
@@ -144,7 +145,7 @@ public class CustomerFormController implements Initializable {
 
     private void loadCustomerTable() {
         customerDtoObservableList.clear();
-        tblCustomers.setItems(customerRepo.getAllCustomers());
+        tblCustomers.setItems(customerFormService.getAllCustomers());
     }
 
     /*-----------------------------------------*/
@@ -162,7 +163,7 @@ public class CustomerFormController implements Initializable {
         String province = comboProvince.getValue();
         String postalCode = txtCusPostal.getText();
 
-        customerRepo.addCustomer(id, title, name, java.sql.Date.valueOf(dob), salary, address, city, province, postalCode);
+        customerFormService.addCustomer(id, title, name, java.sql.Date.valueOf(dob), salary, address, city, province, postalCode);
         loadCustomerTable();
         clearFields();
     }
@@ -179,14 +180,14 @@ public class CustomerFormController implements Initializable {
         String province = comboProvince.getValue();
         String postalCode = txtCusPostal.getText();
 
-        customerRepo.updateCustomer(id, title, name, java.sql.Date.valueOf(dob), salary, address, city, province, postalCode);
+        customerFormService.updateCustomer(id, title, name, java.sql.Date.valueOf(dob), salary, address, city, province, postalCode);
         loadCustomerTable();
     }
 
     @FXML
     void btnDeleteAction(ActionEvent event) {
         String id = txtCusId.getText();
-        customerRepo.deleteCustomer(id);
+        customerFormService.deleteCustomer(id);
         clearFields();
         loadCustomerTable();
     }

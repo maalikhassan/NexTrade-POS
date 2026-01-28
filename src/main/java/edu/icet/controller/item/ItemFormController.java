@@ -20,7 +20,8 @@ import java.util.ResourceBundle;
 
 public class ItemFormController implements Initializable {
 
-    ItemRepo itemRepo = new ItemRepo();
+    //ItemRepo itemRepo = new ItemRepo(); //should pass to the interface, and int will pass to repo
+    ItemFormService itemFormService = new ItemRepo();
     ObservableList<ItemDto> itemDtoObservableList = FXCollections.observableArrayList();
 
     @FXML
@@ -93,7 +94,7 @@ public class ItemFormController implements Initializable {
 
     private void loadItemtable() {
         itemDtoObservableList.clear();
-        itemDtoObservableList.addAll(itemRepo.getAllItems());
+        itemDtoObservableList.addAll(itemFormService.getAllItems());
     }
 
     @FXML
@@ -104,7 +105,7 @@ public class ItemFormController implements Initializable {
         double unitPrice = Double.parseDouble(txtUnitPrice.getText());
         int qtyOnHand = Integer.parseInt(txtQtyOnHand.getText());
 
-        itemRepo.addItem(code, description, packSize, unitPrice, qtyOnHand);
+        itemFormService.addItem(code, description, packSize, unitPrice, qtyOnHand);
         loadItemtable();
         clearFields();
     }
