@@ -141,6 +141,14 @@ public class CustomerFormController implements Initializable {
                 (observableValue, oldValue, newValue) ->
                 {if (newValue != null) setSelectedValue(newValue);
         });
+
+        // Real-time Search Listener
+        txtSearch.textProperty().addListener((observable, oldValue,
+                                              newValue) -> {
+            if (newValue != null) {
+                tblCustomers.setItems(customerFormService.searchCustomer(newValue));
+            }
+        });
     }
 
     private void loadCustomerTable() {

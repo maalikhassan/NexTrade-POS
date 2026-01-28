@@ -24,4 +24,6 @@ public interface CustomerFormService {
 
     void deleteCustomer(String id);
 
+    ObservableList<CustomerDto> searchCustomer(String searchText);
+
 }

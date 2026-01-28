@@ -73,4 +73,17 @@ public class CustomerRepositoryImpl implements CustomerRepository{ //should only
 
             preparedStatement.execute();
     }
+
+    @Override
+    public ResultSet searchCustomer(String searchText) throws SQLException {
+        Connection connection = DBConnection.getInstance().getConnection();
+        // Use the LIKE operator for flexible searching
+        String sql = "SELECT * FROM customer WHERE CustName LIKE ? OR CustId LIKE ?";
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setString(1, "%" + searchText + "%");
+        preparedStatement.setString(2, "%" + searchText + "%");
+        return preparedStatement.executeQuery();
+    }
+
+
 }

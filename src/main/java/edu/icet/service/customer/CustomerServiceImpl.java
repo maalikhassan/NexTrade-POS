@@ -74,4 +74,26 @@ public class CustomerServiceImpl implements CustomerFormService{//should only co
             throw new RuntimeException(e);
         }
     }
+
+    @Override
+    public ObservableList<CustomerDto> searchCustomer(String searchText)
+    {ObservableList<CustomerDto> list = FXCollections.observableArrayList();
+        try {
+            CustomerRepository repo = new CustomerRepositoryImpl();
+            ResultSet rs = repo.searchCustomer(searchText);
+            while (rs.next()) {
+                list.add(new CustomerDto(
+                        rs.getString("CustId"), rs.getString("CustTitle"),
+                        rs.getString("CustName"),
+                        rs.getDate("DOB"), rs.getDouble("salary"),
+                        rs.getString("CustAddress"),
+                        rs.getString("City"), rs.getString("Province"),
+                        rs.getString("PostalCode")
+                ));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
 }
