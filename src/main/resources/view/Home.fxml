@@ -6,6 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="627.0" prefWidth="1078.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.icet.controller.HomeController">
     <children>
@@ -18,10 +19,22 @@
                         <Image url="@../assets/Gemini_buylprburemovebg-preview.png" />
                      </image>
                   </ImageView>
-                        <Button onAction="#loadDashboardView" prefWidth="150.0" style="-fx-background-color: #34495e; -fx-text-fill: white;" text="Dashboard" />
-                        <Button onAction="#loadCustomerView" prefWidth="150.0" style="-fx-background-color: #34495e; -fx-text-fill: white;" text="Customers" />
-                        <Button onAction="#loadItemView" prefWidth="150.0" style="-fx-background-color: #34495e; -fx-text-fill: white;" text="Items" />
-                        <Button onAction="#loadOrderView" prefWidth="150.0" style="-fx-background-color: #34495e; -fx-text-fill: white;" text="Orders" />
+                        <Button onAction="#loadDashboardView" prefWidth="150.0" style="-fx-background-color: #34495e; -fx-text-fill: white; -fx-background-radius: 15;" text="Dashboard">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font></Button>
+                        <Button onAction="#loadCustomerView" prefWidth="150.0" style="-fx-background-color: #34495e; -fx-text-fill: white; -fx-background-radius: 10;" text="Customers">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font></Button>
+                        <Button onAction="#loadItemView" prefWidth="150.0" style="-fx-background-color: #34495e; -fx-text-fill: white; -fx-background-radius: 10;" text="Items">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font></Button>
+                        <Button onAction="#loadOrderView" prefWidth="150.0" style="-fx-background-color: #34495e; -fx-text-fill: white; -fx-background-radius: 10;" text="Orders">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font></Button>
                     </children>
                 </VBox>
             </left>

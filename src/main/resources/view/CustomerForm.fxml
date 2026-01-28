@@ -9,11 +9,13 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="595.0" prefWidth="926.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.icet.controller.customer.CustomerFormController">
    <children>
-      <Label layoutX="364.0" layoutY="14.0" text="Customer Management">
+      <Rectangle fill="#2c3e50" height="56.0" stroke="#0000000b" strokeType="INSIDE" width="926.0" />
+      <Label layoutX="364.0" layoutY="14.0" text="Customer Management" textFill="#f6f6f6">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
@@ -31,20 +33,20 @@
             <TableColumn fx:id="colPostal" text="PostalCode" />
         </columns>
       </TableView>
-      <TextField fx:id="txtCusId" layoutX="42.0" layoutY="56.0" prefHeight="25.0" prefWidth="129.0" promptText="Id" />
-      <TextField fx:id="txtCusName" layoutX="283.0" layoutY="56.0" prefHeight="25.0" prefWidth="199.0" promptText="Name" />
-      <ComboBox fx:id="comboTitle" layoutX="181.0" layoutY="56.0" prefHeight="25.0" prefWidth="82.0" promptText="Title" />
-      <DatePicker fx:id="dateCusDob" layoutX="503.0" layoutY="56.0" promptText="Date Of Birth" />
-      <TextField fx:id="txtCusSalary" layoutX="705.0" layoutY="56.0" prefHeight="25.0" prefWidth="174.0" promptText="Salary" />
-      <TextArea fx:id="txtCusAddress" layoutX="552.0" layoutY="92.0" prefHeight="67.0" prefWidth="327.0" promptText="Address" />
-      <ComboBox fx:id="comboCity" layoutX="211.0" layoutY="92.0" prefHeight="25.0" prefWidth="144.0" promptText="City" />
-      <ComboBox fx:id="comboProvince" layoutX="42.0" layoutY="92.0" prefWidth="150.0" promptText="Province" />
-      <TextField fx:id="txtCusPostal" layoutX="376.0" layoutY="92.0" prefHeight="25.0" prefWidth="150.0" promptText="Postal Code" />
-      <Button fx:id="btnAdd" layoutX="42.0" layoutY="147.0" mnemonicParsing="false" onAction="#btnAddAction" prefHeight="25.0" prefWidth="82.0" style="-fx-background-radius: 15;" text="Add" />
-      <Button fx:id="btnUpdate" layoutX="139.0" layoutY="147.0" mnemonicParsing="false" onAction="#btnUpdateAction" prefHeight="25.0" prefWidth="72.0" style="-fx-background-radius: 15;" text="Update" />
-      <Button fx:id="btnDelete" layoutX="222.0" layoutY="147.0" mnemonicParsing="false" onAction="#btnDeleteAction" prefHeight="25.0" prefWidth="72.0" style="-fx-background-radius: 15;" text="Delete" />
-      <Button fx:id="btnClear" layoutX="304.0" layoutY="147.0" mnemonicParsing="false" onAction="#btnClearAction" prefHeight="25.0" prefWidth="72.0" style="-fx-background-radius: 15;" text="Clear" />
-      <Button fx:id="btnLoad" layoutX="436.0" layoutY="556.0" mnemonicParsing="false" onAction="#btnLoadAction" prefHeight="25.0" prefWidth="55.0" style="-fx-background-radius: 15;" text="Reload" />
+      <TextField fx:id="txtCusId" layoutX="45.0" layoutY="86.0" prefHeight="25.0" prefWidth="129.0" promptText="Id" />
+      <TextField fx:id="txtCusName" layoutX="286.0" layoutY="86.0" prefHeight="25.0" prefWidth="199.0" promptText="Name" />
+      <ComboBox fx:id="comboTitle" layoutX="184.0" layoutY="86.0" prefHeight="25.0" prefWidth="82.0" promptText="Title" />
+      <DatePicker fx:id="dateCusDob" layoutX="506.0" layoutY="86.0" promptText="Date Of Birth" />
+      <TextField fx:id="txtCusSalary" layoutX="708.0" layoutY="86.0" prefHeight="25.0" prefWidth="174.0" promptText="Salary" />
+      <TextArea fx:id="txtCusAddress" layoutX="555.0" layoutY="122.0" prefHeight="67.0" prefWidth="327.0" promptText="Address" />
+      <ComboBox fx:id="comboCity" layoutX="214.0" layoutY="122.0" prefHeight="25.0" prefWidth="144.0" promptText="City" />
+      <ComboBox fx:id="comboProvince" layoutX="45.0" layoutY="122.0" prefWidth="150.0" promptText="Province" />
+      <TextField fx:id="txtCusPostal" layoutX="379.0" layoutY="122.0" prefHeight="25.0" prefWidth="150.0" promptText="Postal Code" />
+      <Button fx:id="btnAdd" layoutX="43.0" layoutY="165.0" mnemonicParsing="false" onAction="#btnAddAction" prefHeight="25.0" prefWidth="82.0" style="-fx-background-radius: 15;" text="Add" />
+      <Button fx:id="btnUpdate" layoutX="140.0" layoutY="165.0" mnemonicParsing="false" onAction="#btnUpdateAction" prefHeight="25.0" prefWidth="72.0" style="-fx-background-radius: 15;" text="Update" />
+      <Button fx:id="btnDelete" layoutX="223.0" layoutY="165.0" mnemonicParsing="false" onAction="#btnDeleteAction" prefHeight="25.0" prefWidth="72.0" style="-fx-background-radius: 15;" text="Delete" />
+      <Button fx:id="btnClear" layoutX="305.0" layoutY="165.0" mnemonicParsing="false" onAction="#btnClearAction" prefHeight="25.0" prefWidth="72.0" style="-fx-background-radius: 15;" text="Clear" />
+      <Button fx:id="btnLoad" layoutX="409.0" layoutY="556.0" mnemonicParsing="false" onAction="#btnLoadAction" prefHeight="25.0" prefWidth="114.0" style="-fx-background-radius: 15;" text="Reload" />
       <TextField fx:id="txtSearch" layoutX="346.0" layoutY="205.0" prefHeight="25.0" prefWidth="258.0" promptText="Search" style="-fx-background-radius: 15;" />
    </children>
 </AnchorPane>
