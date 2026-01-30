@@ -16,7 +16,7 @@
                     <children>
                   <ImageView fitHeight="150.0" fitWidth="152.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../assets/Gemini_buylprburemovebg-preview.png" />
+                        <Image url="@../assets/nextradelogobgrem.png" />
                      </image>
                   </ImageView>
                         <Button onAction="#loadDashboardView" prefWidth="150.0" style="-fx-background-color: #34495e; -fx-text-fill: white; -fx-background-radius: 15;" text="Dashboard">
