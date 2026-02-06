@@ -19,4 +19,6 @@ public interface CustomerRepository {
 
     ResultSet searchCustomer(String searchText) throws SQLException;
 
+    ResultSet getCustomerById(String id) throws SQLException;
+
     }

@@ -85,5 +85,14 @@ public class CustomerRepositoryImpl implements CustomerRepository{ //should only
         return preparedStatement.executeQuery();
     }
 
+    @Override
+    public ResultSet getCustomerById(String id) throws SQLException {
+        Connection connection = DBConnection.getInstance().getConnection();
+        PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM customer WHERE CustId=?");
+        preparedStatement.setObject(1, id);
+        return preparedStatement.executeQuery(); //returning the result set directly,-
+        // so that the service layer can process it and extract the name
+    }
+
 
 }

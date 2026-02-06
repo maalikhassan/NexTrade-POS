@@ -75,4 +75,14 @@ public class ItemRepositoryImpl implements ItemRepository {
         }
 
     }
+
+    @Override
+    public ResultSet getItembyCode(String code) throws SQLException {
+        Connection connection = DBConnection.getInstance().getConnection();
+        ResultSet resultSet = connection.prepareStatement("SELECT*FROM item WHERE ItemCode='"+code+"'").executeQuery();
+        //in the above instead of using prepared statement,and then ? and setting object ,   can directly
+        // execute the query as above since we are only passing a single parameter and it is not user input.
+        // However, in a real-world application, it's recommended to use prepared statements to prevent SQL injection attacks.
+        return resultSet;
+    }
 }

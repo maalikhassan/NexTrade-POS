@@ -16,4 +16,6 @@ public interface ItemRepository {
             throws SQLException;
 
     void deleteItem(String code) throws SQLException;
+
+    public ResultSet getItembyCode(String code) throws SQLException;
 }
