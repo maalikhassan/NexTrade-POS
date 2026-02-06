@@ -1,19 +1,23 @@
 package edu.icet.controller.order;
 
 import edu.icet.model.dto.ItemDto;
-import edu.icet.service.customer.CustomerFormService;
-import edu.icet.service.customer.CustomerServiceImpl;
-import edu.icet.service.item.ItemFormService;
-import edu.icet.service.item.ItemServiceImpl;
+import edu.icet.model.dto.OrderDetailDto;
 import edu.icet.service.order.OrderFormService;
 import edu.icet.service.order.OrderServiceImpl;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 
-public class OrderFormController {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class OrderFormController implements Initializable {
+
+    private final ObservableList<OrderDetailDto> cartItems = FXCollections.observableArrayList();
 
 //    ItemFormService itemFormService = new ItemServiceImpl();
 //    CustomerFormService customerFormService = new CustomerServiceImpl(); we properly seperate the layers
@@ -48,7 +52,7 @@ public class OrderFormController {
     private Label lblNetTotal;
 
     @FXML
-    private TableView<?> tblCartItems;
+    private TableView<OrderDetailDto> tblCartItems;
 
     @FXML
     private TextField txtCusId;
@@ -71,22 +75,53 @@ public class OrderFormController {
     @FXML
     private TextField txtUnitPrice;
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        // Set up Table Columns (ensure these IDs match your FXML)
+        colItemCode.setCellValueFactory(new PropertyValueFactory<>("itemCode"));
+        colDescription.setCellValueFactory(new PropertyValueFactory<>("description"));
+        colQuantity.setCellValueFactory(new PropertyValueFactory<>("qty"));
+        colUnitPrice.setCellValueFactory(new PropertyValueFactory<>("unitPrice"));
+        colDiscount.setCellValueFactory(new PropertyValueFactory<>("discount"));
+        colTotal.setCellValueFactory(new PropertyValueFactory<>("total"));
+
+        tblCartItems.setItems(cartItems);
+    }
+
     @FXML
     void btnAddToCartAction(ActionEvent event) {
 
-        String cusId = txtCusId.getText();
-        String cusName = txtCusName.getText();
         String itemCode = txtItemCode.getText();
         String description = txtDescription.getText();
-        String unitPrice = txtUnitPrice.getText();
-        String qty = txtQty.getText();
-        String discount = txtDiscount.getText();
+        int qty = Integer.parseInt(txtQty.getText());
+        double unitPrice = Double.parseDouble(txtUnitPrice.getText());
+        double discount = txtDiscount.getText().isEmpty() ? 0 : Double.parseDouble(txtDiscount.getText());
 
-        // Here we can add the logic to add the item to the cart and update the table view accordingly
-        // We can also calculate the total price for the item and update the net total label
+        //1. Calculate Total for this line item
+        double total = (unitPrice * qty) - discount;
 
+        // 2. Check if item already exists in the cart
+        for (OrderDetailDto item : cartItems) {
+            if (item.getItemCode().equals(itemCode)) {
+                item.setQty(item.getQty() + qty);
+                item.setTotal(item.getTotal() + total);
+                tblCartItems.refresh();
+                calculateNetTotal();
+                return;
+            }
+        }
 
+        // 3. Add new item to cart if it's not a duplicate
+        cartItems.add(new OrderDetailDto(itemCode, description, qty, unitPrice, discount, total));
+        calculateNetTotal();
+    }
 
+    private void calculateNetTotal() {
+        double netTotal = 0.0;
+        for (OrderDetailDto item : cartItems) {
+            netTotal += item.getTotal();
+        }
+        lblNetTotal.setText(String.format("%.2f", netTotal));
     }
 
     @FXML
